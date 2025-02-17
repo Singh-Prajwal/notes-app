@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+type Note = {
+  _id: number;
+  title: string;
+  content: string;
+  category: string;
+};
 const Dashboard = () => {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState<Note[]>([]);
   const [newNote, setNewNote] = useState({
     title: "",
     content: "",
@@ -113,7 +118,7 @@ const Dashboard = () => {
               No notes found. Start adding some!
             </p>
           ) : (
-            notes.map((note: any) => (
+            notes.map((note: Note) => (
               <div key={note._id} className="col-md-4 mb-4">
                 <div className="card shadow-sm border-0 bg-white h-100">
                   <div className="card-body">
